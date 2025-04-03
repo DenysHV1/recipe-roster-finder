@@ -4,13 +4,14 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { X, Plus, Filter } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { filterRecipesByIngredients } from '../store/recipeSlice';
 import { RootState } from '../store/store';
 import { toast } from '@/components/ui/use-toast';
+import { useAppDispatch } from '../hooks/useRedux';
 
 const IngredientsFilter = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const activeIngredients = useSelector((state: RootState) => state.recipes.ingredients);
   const [ingredientInput, setIngredientInput] = useState('');
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);

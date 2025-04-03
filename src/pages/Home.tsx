@@ -1,15 +1,16 @@
 
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { fetchRandomRecipesAsync } from '../store/recipeSlice';
 import RecipeCard from '../components/RecipeCard';
 import SearchBar from '../components/SearchBar';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+import { useAppDispatch } from '../hooks/useRedux';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const { recipes, loading, error } = useSelector((state: RootState) => state.recipes);
   const userRecipes = useSelector((state: RootState) => state.recipes.userRecipes);
   const favoriteRecipes = useSelector((state: RootState) => state.recipes.favoriteRecipes);

@@ -1,15 +1,16 @@
 
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { RootState } from '../store/store';
 import { fetchRecipesByIngredientsAsync } from '../store/recipeSlice';
 import RecipeCard from '../components/RecipeCard';
 import SearchBar from '../components/SearchBar';
 import IngredientsFilter from '../components/IngredientsFilter';
+import { useAppDispatch } from '../hooks/useRedux';
 
 const Search = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   

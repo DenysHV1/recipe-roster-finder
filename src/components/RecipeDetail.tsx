@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../store/store';
 import { Recipe, setSelectedRecipe, toggleFavorite, deleteUserRecipe } from '../store/recipeSlice';
 import { fetchRecipeById } from '../services/api';
@@ -9,11 +9,12 @@ import { Heart, Clock, Users, Edit, Trash, ArrowLeft } from 'lucide-react';
 import { Separator } from '@/components/ui/separator';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/components/ui/use-toast';
+import { useAppDispatch } from '../hooks/useRedux';
 
 const RecipeDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const selectedRecipe = useSelector((state: RootState) => state.recipes.selectedRecipe);
   const userRecipes = useSelector((state: RootState) => state.recipes.userRecipes);
   const recipes = useSelector((state: RootState) => state.recipes.recipes);

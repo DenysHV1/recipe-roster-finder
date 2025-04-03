@@ -1,15 +1,15 @@
 
 import { Heart } from 'lucide-react';
 import { Recipe, toggleFavorite } from '../store/recipeSlice';
-import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { useAppDispatch } from '../hooks/useRedux';
 
 interface RecipeCardProps {
   recipe: Recipe;
 }
 
 const RecipeCard = ({ recipe }: RecipeCardProps) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   
   const handleToggleFavorite = (e: React.MouseEvent) => {
     e.preventDefault();
